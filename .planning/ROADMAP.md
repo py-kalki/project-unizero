@@ -43,6 +43,12 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 3. Clerk authentication integrated with Next.js App Router
 4. Base UI component library (shadcn/ui) installed and configured
 
+**Plans:** 2 plans
+
+**Plan List:**
+- [ ] 01-01-PLAN.md — Scaffold Next.js 15 project with TypeScript and Tailwind
+- [ ] 01-02-PLAN.md — Complete infrastructure (Prisma, Clerk, shadcn/ui, dev tools)
+
 ---
 
 ### Phase 2: Authentication
@@ -195,7 +201,7 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 
 | Phase | Name | Requirements | Status |
 |-------|------|--------------|--------|
-| 1 | Foundation | 2 | Pending |
+| 1 | Foundation | 2 | Planned |
 | 2 | Authentication | 7 | Pending |
 | 3 | AI Discovery Core | 6 | Pending |
 | 4 | Subscription Core | 4 | Pending |
@@ -210,4 +216,5 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 ---
 
 *Roadmap created: 2026-02-14*
-*Next: `/gsd-plan-phase 1` to begin planning Phase 1 (Foundation)*
+*Plans created: 2 plans for Phase 1 (Foundation)*
+*Next: `/gsd-execute-phase 1` to execute Phase 1*
