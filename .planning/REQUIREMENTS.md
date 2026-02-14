@@ -113,40 +113,41 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase X | Pending |
-| AUTH-02 | Phase X | Pending |
-| AUTH-03 | Phase X | Pending |
-| AUTH-04 | Phase X | Pending |
-| AUTH-05 | Phase X | Pending |
-| AUTH-06 | Phase X | Pending |
-| AUTH-07 | Phase X | Pending |
-| DISC-01 | Phase X | Pending |
-| DISC-02 | Phase X | Pending |
-| DISC-03 | Phase X | Pending |
-| DISC-04 | Phase X | Pending |
-| DISC-05 | Phase X | Pending |
-| DISC-06 | Phase X | Pending |
-| SUB-01 | Phase X | Pending |
-| SUB-02 | Phase X | Pending |
-| SUB-03 | Phase X | Pending |
-| SUB-04 | Phase X | Pending |
-| SUB-05 | Phase X | Pending |
-| SUB-06 | Phase X | Pending |
-| SUB-07 | Phase X | Pending |
-| SUB-08 | Phase X | Pending |
-| DASH-01 | Phase X | Pending |
-| DASH-02 | Phase X | Pending |
-| DASH-03 | Phase X | Pending |
-| DASH-04 | Phase X | Pending |
-| COMP-01 | Phase X | Pending |
-| COMP-02 | Phase X | Pending |
-| COMP-03 | Phase X | Pending |
+| AUTH-01 | Phase 2 - Authentication | Pending |
+| AUTH-02 | Phase 2 - Authentication | Pending |
+| AUTH-03 | Phase 2 - Authentication | Pending |
+| AUTH-04 | Phase 2 - Authentication | Pending |
+| AUTH-05 | Phase 2 - Authentication | Pending |
+| AUTH-06 | Phase 2 - Authentication | Pending |
+| AUTH-07 | Phase 2 - Authentication | Pending |
+| DISC-01 | Phase 3 - AI Discovery Core | Pending |
+| DISC-02 | Phase 3 - AI Discovery Core | Pending |
+| DISC-03 | Phase 3 - AI Discovery Core | Pending |
+| DISC-04 | Phase 3 - AI Discovery Core | Pending |
+| DISC-05 | Phase 3 - AI Discovery Core | Pending |
+| DISC-06 | Phase 3 - AI Discovery Core | Pending |
+| SUB-01 | Phase 4 - Subscription Core | Pending |
+| SUB-02 | Phase 4 - Subscription Core | Pending |
+| SUB-03 | Phase 4 - Subscription Core | Pending |
+| SUB-04 | Phase 4 - Subscription Core | Pending |
+| SUB-05 | Phase 5 - Subscription Calculations | Pending |
+| SUB-06 | Phase 5 - Subscription Calculations | Pending |
+| SUB-07 | Phase 5 - Subscription Calculations | Pending |
+| SUB-08 | Phase 5 - Subscription Calculations | Pending |
+| DASH-01 | Phase 6 - Dashboard Core | Pending |
+| DASH-02 | Phase 7 - Analytics Dashboard | Pending |
+| DASH-03 | Phase 7 - Analytics Dashboard | Pending |
+| DASH-04 | Phase 6 - Dashboard Core | Pending |
+| COMP-01 | Phase 8 - Comparison | Pending |
+| COMP-02 | Phase 8 - Comparison | Pending |
+| COMP-03 | Phase 8 - Comparison | Pending |
 
 **Coverage:**
 - v1 requirements: 27 total
-- Mapped to phases: 0
-- Unmapped: 27 ⚠️
+- Mapped to phases: 27 ✓
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-14*
-*Last updated: 2026-02-14 after initial definition*
+*Last updated: 2026-02-14 after roadmap creation (traceability added)*
+*Next: `/gsd-plan-phase 1` to plan Foundation phase*
