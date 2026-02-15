@@ -39,3 +39,7 @@ coverage/
 
 # Misc
 *.log
+
+# Local dev database (SQLite - not used, PostgreSQL via Neon)
+dev.db
+*.db
