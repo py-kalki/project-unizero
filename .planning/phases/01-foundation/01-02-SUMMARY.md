@@ -44,8 +44,8 @@ key_files:
     - src/app/layout.tsx
     - package.json
 decisions:
-  - decision: "Use SQLite for local development (dev.db)"
-    rationale: "Simplified local development without PostgreSQL dependency"
+  - decision: "Use PostgreSQL for database (Neon cloud)"
+    rationale: "Production-grade database with cloud-hosted free tier"
   - decision: "Use Clerk for authentication"
     rationale: "Fastest time-to-production with comprehensive auth features"
   - decision: "Use shadcn/ui component system"
@@ -65,7 +65,7 @@ Completed infrastructure setup including Prisma database, Clerk authentication, 
 
 ## Completed Tasks
 
-### Task 1: Setup Prisma with SQLite and User model
+### Task 1: Setup Prisma with PostgreSQL and User model
 
 **Status:** Completed
 
@@ -76,13 +76,15 @@ Completed infrastructure setup including Prisma database, Clerk authentication, 
 
 **Implementation:**
 
-- SQLite datasource provider (dev.db file)
+- PostgreSQL datasource provider (Neon cloud)
 - User model with id, email, name, createdAt, updatedAt
 - Email unique index for data integrity
+- Connection pooling via Neon
 
 **Verification:**
 
 - Prisma client generates successfully
+- Schema pushed to Neon PostgreSQL database
 
 ### Task 2: Configure Clerk authentication
 
@@ -148,10 +150,10 @@ None - all infrastructure was pre-existing.
 
 ### Deviations from Plan
 
-1. **Database: SQLite instead of PostgreSQL**
-   - Plan specified PostgreSQL for production
-   - Used SQLite (dev.db) for local development simplicity
-   - Works correctly for development purposes
+1. **Database: Switched to PostgreSQL (Neon cloud)**
+   - Plan specified PostgreSQL
+   - Initially used SQLite for simplicity
+   - Later switched to Neon PostgreSQL as requested
 
 2. **Infrastructure already present**
    - All infrastructure tasks were completed before execution began
