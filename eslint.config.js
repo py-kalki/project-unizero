@@ -1,2 +1,4 @@
 // ESLint 9 configuration
-// Using Next.js built-in ESLint via npm run lint
+const nextPlugin = require('eslint-config-next');
+
+module.exports = [...nextPlugin];
