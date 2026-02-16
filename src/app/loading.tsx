@@ -1,3 +1,11 @@
+/**
+ * Loading Component
+ *
+ * Displays a loading spinner while page content is being loaded.
+ * Used during client-side navigation in Next.js App Router.
+ * @module app/loading
+ */
+
 export default function Loading() {
   return (
     <div className="flex min-h-[400px] items-center justify-center">

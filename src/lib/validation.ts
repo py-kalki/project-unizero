@@ -3,10 +3,13 @@
  * 
  * Centralized validation functions following DRY principle.
  * Reusable validation logic across the application.
+ * @module lib/validation
  */
 
 /**
  * Email validation
+ * @param email - Email address to validate
+ * @returns True if email format is valid
  */
 export function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,6 +18,8 @@ export function isValidEmail(email: string): boolean {
 
 /**
  * URL validation
+ * @param url - URL string to validate
+ * @returns True if URL is valid
  */
 export function isValidUrl(url: string): boolean {
   try {
@@ -27,7 +32,9 @@ export function isValidUrl(url: string): boolean {
 
 /**
  * Password strength validation
- * Returns true if password is valid
+ * Checks for minimum requirements: 8 chars, uppercase, lowercase, number
+ * @param password - Password to validate
+ * @returns Object with valid status and list of errors
  */
 export function isValidPassword(password: string): {
   valid: boolean;
@@ -56,6 +63,8 @@ export function isValidPassword(password: string): {
 
 /**
  * Validate required field
+ * @param value - Value to check
+ * @returns True if value is present
  */
 export function isRequired(value: unknown): boolean {
   if (typeof value === "string") return value.trim().length > 0;
@@ -66,6 +75,9 @@ export function isRequired(value: unknown): boolean {
 
 /**
  * Validate string length
+ * @param value - String to validate
+ * @param options - Min/max length options
+ * @returns True if length is within bounds
  */
 export function hasValidLength(
   value: string,
@@ -82,6 +94,9 @@ export function hasValidLength(
 
 /**
  * Sanitize input - prevent XSS
+ * Escapes HTML special characters
+ * @param input - Raw input string
+ * @returns Sanitized string
  */
 export function sanitizeInput(input: string): string {
   return input
@@ -94,6 +109,9 @@ export function sanitizeInput(input: string): string {
 
 /**
  * Validate environment variables
+ * Checks if required env vars are present
+ * @param required - Array of required environment variable names
+ * @returns Object with valid status and list of missing variables
  */
 export function validateEnvVars(required: string[]): {
   valid: boolean;

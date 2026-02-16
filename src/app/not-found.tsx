@@ -1,6 +1,18 @@
+/**
+ * Not Found Page
+ *
+ * Custom 404 error page displayed when a route doesn't exist.
+ * Provides navigation options to help users find what they're looking for.
+ * @module app/not-found
+ */
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
+/**
+ * 404 Not Found Page Component
+ * Displays when a requested page doesn't exist
+ */
 export default function NotFound() {
   return (
     <div className="flex min-h-[400px] flex-col items-center justify-center gap-6 text-center">

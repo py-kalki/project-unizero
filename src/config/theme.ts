@@ -3,20 +3,24 @@
  *
  * Centralized theme settings for the application.
  * Extensible without modifying existing components.
+ * @module config/theme
  */
 
+/**
+ * Theme configuration object
+ */
 export const themeConfig = {
-  // Default theme preference
+  /** Default theme preference */
   defaultTheme: 'system' as const,
 
-  // Theme provider options
+  /** Theme provider options */
   provider: {
     attribute: 'class',
     enableSystem: true,
     disableTransitionOnChange: false,
   },
 
-  // Color scheme
+  /** Color scheme tokens */
   colors: {
     primary: 'hsl(var(--primary))',
     foreground: 'hsl(var(--foreground))',
@@ -26,7 +30,7 @@ export const themeConfig = {
     destructive: 'hsl(var(--destructive))',
   },
 
-  // Animation durations
+  /** Animation durations in milliseconds */
   transitions: {
     fast: '150ms',
     normal: '300ms',
@@ -34,4 +38,5 @@ export const themeConfig = {
   },
 } as const;
 
+/** Type definition for theme configuration */
 export type ThemeConfig = typeof themeConfig;

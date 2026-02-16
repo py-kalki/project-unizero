@@ -67,8 +67,8 @@ export default function RootLayout({
           appearance={clerkAppearance}
           signInUrl={clerkUrls.signIn}
           signUpUrl={clerkUrls.signUp}
-          afterSignInUrl={clerkUrls.afterSignIn}
-          afterSignUpUrl={clerkUrls.afterSignUp}
+          signInFallbackRedirectUrl={clerkUrls.signInFallbackRedirectUrl}
+          signUpFallbackRedirectUrl={clerkUrls.signUpFallbackRedirectUrl}
         >
           <ThemeProvider
             attribute={themeConfig.provider.attribute}

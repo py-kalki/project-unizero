@@ -1,4 +1,9 @@
-// ESLint 9 configuration
-const nextPlugin = require('eslint-config-next');
+import nextVitals from 'eslint-config-next/core-web-vitals';
 
-module.exports = [...nextPlugin];
+/**
+ * ESLint Configuration
+ *
+ * Extends Next.js core web vitals ESLint configuration.
+ * This ensures the project follows Next.js best practices.
+ */
+export default [...nextVitals];

@@ -1,23 +1,28 @@
 import { MetadataRoute } from 'next';
+import { APP_URL } from '@/config/constants';
 
+/**
+ * Sitemap Configuration
+ *
+ * Generates XML sitemap for search engine indexing.
+ * Includes all public pages with appropriate change frequencies.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://unizero.ai';
-
   return [
     {
-      url: baseUrl,
+      url: APP_URL,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/sign-in`,
+      url: `${APP_URL}/sign-in`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/sign-up`,
+      url: `${APP_URL}/sign-up`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,

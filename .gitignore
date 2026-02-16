@@ -206,3 +206,18 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 node_modules
+
+# ===========================================
+# Next.js Build Output
+# ===========================================
+.next/
+out/
+next-env.d.ts
+next.config.ts.build.log
+*.tsbuildinfo
+
+# ===========================================
+# Additional Ignores
+# ===========================================
+dev.db
+nul

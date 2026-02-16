@@ -1,5 +1,12 @@
 import { MetadataRoute } from 'next';
+import { APP_URL } from '@/config/constants';
 
+/**
+ * Robots.txt Configuration
+ *
+ * Generates robots.txt for search engine crawlers.
+ * Disallows protected routes while allowing public access.
+ */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/dashboard/', '/settings/'],
     },
-    sitemap: `${process.env.NEXT_PUBLIC_APP_URL || 'https://unizero.ai'}/sitemap.xml`,
+    sitemap: `${APP_URL}/sitemap.xml`,
   };
 }

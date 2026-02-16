@@ -1,13 +1,18 @@
-import { NextResponse } from "next/server";
-
 /**
  * API Response Utilities
  * 
  * Centralized API response helpers following DRY principle.
+ * Provides standardized response formats for API routes.
+ * @module lib/api-response
  */
+
+import { NextResponse } from "next/server";
 
 /**
  * Success response
+ * @param data - Data to return in response
+ * @param options - Optional status code and message
+ * @returns NextResponse with success JSON
  */
 export function apiSuccess<T>(
   data: T,
@@ -28,6 +33,9 @@ export function apiSuccess<T>(
 
 /**
  * Error response
+ * @param message - Error message
+ * @param options - Optional status code, error code, and validation errors
+ * @returns NextResponse with error JSON
  */
 export function apiError(
   message: string,
@@ -52,6 +60,8 @@ export function apiError(
 
 /**
  * Validation error response (400)
+ * @param errors - Validation error details
+ * @returns NextResponse with 400 status
  */
 export function apiValidationError(errors: Record<string, string[]>) {
   return apiError("Validation failed", {
@@ -63,6 +73,8 @@ export function apiValidationError(errors: Record<string, string[]>) {
 
 /**
  * Not found response (404)
+ * @param resource - Name of resource that wasn't found
+ * @returns NextResponse with 404 status
  */
 export function apiNotFound(resource: string) {
   return apiError(`${resource} not found`, {
@@ -73,6 +85,8 @@ export function apiNotFound(resource: string) {
 
 /**
  * Unauthorized response (401)
+ * @param message - Optional custom message
+ * @returns NextResponse with 401 status
  */
 export function apiUnauthorized(message = "Unauthorized") {
   return apiError(message, {
@@ -83,6 +97,8 @@ export function apiUnauthorized(message = "Unauthorized") {
 
 /**
  * Forbidden response (403)
+ * @param message - Optional custom message
+ * @returns NextResponse with 403 status
  */
 export function apiForbidden(message = "Forbidden") {
   return apiError(message, {
@@ -93,6 +109,8 @@ export function apiForbidden(message = "Forbidden") {
 
 /**
  * Method not allowed response (405)
+ * @param method - HTTP method that isn't allowed
+ * @returns NextResponse with 405 status
  */
 export function apiMethodNotAllowed(method: string) {
   return apiError(`Method ${method} not allowed`, {
