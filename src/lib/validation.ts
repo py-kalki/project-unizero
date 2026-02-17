@@ -23,7 +23,15 @@ export function isValidEmail(email: string): boolean {
  */
 export function isValidUrl(url: string): boolean {
   try {
-    new URL(url);
+    const urlObj = new URL(url);
+    // Only allow http and https protocols
+    if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
+      return false;
+    }
+    // Ensure hostname is present (rejects data:, javascript:, etc.)
+    if (!urlObj.hostname) {
+      return false;
+    }
     return true;
   } catch {
     return false;
@@ -68,7 +76,7 @@ export function isValidPassword(password: string): {
  */
 export function isRequired(value: unknown): boolean {
   if (typeof value === "string") return value.trim().length > 0;
-  if (typeof value === "number") return true;
+  if (typeof value === "number") return Number.isFinite(value);
   if (Array.isArray(value)) return value.length > 0;
   return value !== null && value !== undefined;
 }
