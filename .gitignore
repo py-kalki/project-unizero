@@ -219,5 +219,7 @@ next.config.ts.build.log
 # ===========================================
 # Additional Ignores
 # ===========================================
+# Don't ignore src/lib (contains TypeScript services)
+!src/lib
 dev.db
 nul
