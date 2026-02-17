@@ -3,7 +3,7 @@
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounced-callback';
 import { Input } from '@/components/ui/input';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface ToolSearchProps {
   initialValue?: string;
@@ -13,15 +13,17 @@ export function ToolSearch({ initialValue = '' }: ToolSearchProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const [value, setValue] = useState(initialValue);
 
-  // Sync with URL on initial load
-  useEffect(() => {
-    const q = searchParams.get('q');
-    if (q !== null) {
-      setValue(q);
+  // Initialize from URL if available, otherwise use initialValue prop
+  // This only runs once on mount due to useState lazy initialization
+  const [value, setValue] = useState(() => {
+    if (typeof window !== 'undefined') {
+      // Client-side: try to get from URL first
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('q') ?? initialValue;
     }
-  }, [searchParams]);
+    return initialValue;
+  });
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
