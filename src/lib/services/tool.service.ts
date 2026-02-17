@@ -7,6 +7,17 @@ import type {
 } from '@/types/tools';
 
 /**
+ * Serialize tool for client components (convert Decimal to number)
+ */
+function serializeTool(tool: Record<string, unknown>): Record<string, unknown> {
+  return {
+    ...tool,
+    monthlyPrice: tool.monthlyPrice != null ? Number(tool.monthlyPrice) : null,
+    yearlyPrice: tool.yearlyPrice != null ? Number(tool.yearlyPrice) : null,
+  };
+}
+
+/**
  * Get paginated, filtered AI tools
  */
 export async function getTools({
@@ -61,7 +72,9 @@ export async function getTools({
   ]);
 
   return {
-    tools: tools as ToolWithCategory[],
+    tools: tools.map((tool) =>
+      serializeTool(tool)
+    ) as unknown as ToolWithCategory[],
     total,
     page,
     perPage,
@@ -81,5 +94,7 @@ export async function getToolBySlug(
     },
   });
 
-  return tool as ToolWithCategory | null;
+  if (!tool) return null;
+
+  return serializeTool(tool) as unknown as ToolWithCategory;
 }
