@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from '@/components/theme-provider';
+import { AuthButton } from '@/components/auth/user-button';
 import { clerkAppearance, clerkUrls } from '@/config/clerk';
 import { themeConfig } from '@/config/theme';
 import './globals.css';
@@ -78,7 +79,10 @@ export default function RootLayout({
               themeConfig.provider.disableTransitionOnChange
             }
           >
-            {children}
+            <header className="flex justify-end p-4 gap-4">
+              <AuthButton />
+            </header>
+            <main>{children}</main>
           </ThemeProvider>
         </ClerkProvider>
       </body>
