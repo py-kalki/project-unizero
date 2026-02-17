@@ -33,7 +33,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwind-merge": "^3.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "use-debounced-callback": "^1.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
