@@ -229,7 +229,7 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 | ----- | ------------------------- | ------------ | -------- |
 | 1     | Foundation                | 2            | Complete |
 | 2     | Authentication            | 7            | Complete |
-| 3     | AI Discovery Core         | 6            | Pending  |
+| 3     | AI Discovery Core         | 6            | Complete |
 | 4     | Subscription Core         | 4            | Pending  |
 | 5     | Subscription Calculations | 4            | Pending  |
 | 6     | Dashboard Core            | 2            | Pending  |
@@ -237,7 +237,7 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 | 8     | Comparison                | 3            | Pending  |
 | 9     | Polish                    | —            | Pending  |
 
-**Overall:** 1/9 phases complete
+**Overall:** 2/9 phases complete
 
 ---
 
