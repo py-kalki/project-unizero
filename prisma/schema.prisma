@@ -6,6 +6,15 @@ datasource db {
   provider = "postgresql"
 }
 
+// Pricing type enum
+enum PricingType {
+  FREE
+  FREEMIUM
+  SUBSCRIPTION
+  PER_TOKEN
+}
+
+// User model with favorites relation
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -13,5 +22,94 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  favorites Favorite[]
+  subscriptions Subscription[]
+
   @@index([email])
+}
+
+// AI Tool Categories
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique // "Large Language Models", "Image Generation"
+  slug        String    @unique // "llms", "image-generation"
+  description String?
+  icon        String?   // Lucide icon name
+  tools       AITool[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([slug])
+}
+
+// AI Tools Catalog
+model AITool {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  description   String?   @db.Text
+  websiteUrl    String
+  logoUrl       String?
+  categoryId    String
+  category      Category  @relation(fields: [categoryId], references: [id])
+
+  // Pricing
+  pricingType   PricingType @default(FREEMIUM) // FREE, FREEMIUM, SUBSCRIPTION, PER_TOKEN
+  monthlyPrice  Decimal?   @db.Decimal(10, 2)  // Null if free
+  yearlyPrice   Decimal?   @db.Decimal(10, 2)
+  pricingNote   String?    // "Starts at $20/mo", "Pay per token"
+
+  // Features
+  features      Json      @default("[]") // Array of feature strings
+  isPopular     Boolean   @default(false)
+
+  // Timestamps for stale data tracking
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastVerifiedAt DateTime? // When pricing/features were last verified
+
+  // Relations
+  subscriptions Subscription[]
+  favorites    Favorite[]
+
+  @@index([categoryId])
+  @@index([pricingType])
+  @@index([name])
+}
+
+// User Favorites
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  toolId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool      AITool   @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, toolId])
+  @@index([userId])
+  @@index([toolId])
+}
+
+// Subscriptions
+model Subscription {
+  id            String    @id @default(cuid())
+  userId        String
+  toolId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool          AITool    @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  
+  // Subscription details
+  billingCycle  String    @default("monthly") // "monthly" or "yearly"
+  startDate     DateTime  @default(now())
+  endDate       DateTime?
+  isActive      Boolean   @default(true)
+  notes         String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([toolId])
+  @@index([userId, toolId])
 }
