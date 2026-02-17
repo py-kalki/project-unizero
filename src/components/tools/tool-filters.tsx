@@ -6,23 +6,32 @@ import { Badge } from '@/components/ui/badge';
 
 /**
  * Categories for AI tools (from research)
+ * Maps display names to slugs for URL params
  */
 const CATEGORIES = [
-  'Writing & Content',
-  'Image Generation',
-  'Video & Animation',
-  'Audio & Music',
-  'Coding & Development',
-  'Data & Analytics',
-  'Marketing & Sales',
-  'Productivity',
-  'Education & Research',
+  { name: 'Writing & Content', slug: 'writing' },
+  { name: 'Image Generation', slug: 'image-generation' },
+  { name: 'Video & Animation', slug: 'video-animation' },
+  { name: 'Audio & Music', slug: 'audio-music' },
+  { name: 'Coding & Development', slug: 'coding-development' },
+  { name: 'Data & Analytics', slug: 'data-analytics' },
+  { name: 'Marketing & Sales', slug: 'marketing-sales' },
+  { name: 'Productivity', slug: 'productivity' },
+  { name: 'Education & Research', slug: 'education-research' },
 ];
 
 /**
  * Pricing types for filtering
  */
 const PRICING_TYPES = ['FREE', 'FREEMIUM', 'SUBSCRIPTION', 'PER_TOKEN'];
+
+/**
+ * Helper to get category display name from slug
+ */
+function getCategoryName(slug: string): string {
+  const category = CATEGORIES.find((c) => c.slug === slug);
+  return category?.name || slug;
+}
 
 interface ToolFiltersProps {
   onClearFilters?: () => void;
@@ -90,15 +99,15 @@ export function ToolFilters({ onClearFilters }: ToolFiltersProps) {
         <h4 className="text-sm font-medium">Category</h4>
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((category) => {
-            const isSelected = selectedCategories.includes(category);
+            const isSelected = selectedCategories.includes(category.slug);
             return (
               <Button
-                key={category}
+                key={category.slug}
                 variant={isSelected ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => updateFilter('category', category)}
+                onClick={() => updateFilter('category', category.slug)}
               >
-                {category}
+                {category.name}
               </Button>
             );
           })}
@@ -138,7 +147,7 @@ export function ToolFilters({ onClearFilters }: ToolFiltersProps) {
                 className="cursor-pointer"
                 onClick={() => updateFilter('category', category)}
               >
-                {category} ×
+                {getCategoryName(category)} ×
               </Badge>
             ))}
             {selectedPricing.map((pricing) => (
