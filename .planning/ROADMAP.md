@@ -90,6 +90,15 @@ This roadmap delivers UNIZERO in 9 phases, progressing from infrastructure throu
 4. User can filter tools by pricing model (free, freemium, subscription, per-token)
 5. User can view detailed tool pages with name, description, pricing, website link
 
+**Plans:** 4 plans
+
+**Plan List:**
+
+- [ ] 03-01-PLAN.md — Add database schema and seed 50+ AI tools
+- [ ] 03-02-PLAN.md — Create tool service with search/filter/pagination
+- [ ] 03-03-PLAN.md — Create UI components (Card, Grid, Search, Filters)
+- [ ] 03-04-PLAN.md — Create tools catalog and detail pages
+
 ---
 
 ### Phase 4: Subscription Core
