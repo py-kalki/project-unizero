@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -65,8 +57,6 @@
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {

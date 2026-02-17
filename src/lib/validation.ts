@@ -1,0 +1,134 @@
+/**
+ * Validation Utilities
+ * 
+ * Centralized validation functions following DRY principle.
+ * Reusable validation logic across the application.
+ * @module lib/validation
+ */
+
+/**
+ * Email validation
+ * @param email - Email address to validate
+ * @returns True if email format is valid
+ */
+export function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+/**
+ * URL validation
+ * @param url - URL string to validate
+ * @returns True if URL is valid
+ */
+export function isValidUrl(url: string): boolean {
+  try {
+    const urlObj = new URL(url);
+    // Only allow http and https protocols
+    if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
+      return false;
+    }
+    // Ensure hostname is present (rejects data:, javascript:, etc.)
+    if (!urlObj.hostname) {
+      return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Password strength validation
+ * Checks for minimum requirements: 8 chars, uppercase, lowercase, number
+ * @param password - Password to validate
+ * @returns Object with valid status and list of errors
+ */
+export function isValidPassword(password: string): {
+  valid: boolean;
+  errors: string[];
+} {
+  const errors: string[] = [];
+  
+  if (password.length < 8) {
+    errors.push("Password must be at least 8 characters");
+  }
+  if (!/[A-Z]/.test(password)) {
+    errors.push("Password must contain at least one uppercase letter");
+  }
+  if (!/[a-z]/.test(password)) {
+    errors.push("Password must contain at least one lowercase letter");
+  }
+  if (!/[0-9]/.test(password)) {
+    errors.push("Password must contain at least one number");
+  }
+  
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
+/**
+ * Validate required field
+ * @param value - Value to check
+ * @returns True if value is present
+ */
+export function isRequired(value: unknown): boolean {
+  if (typeof value === "string") return value.trim().length > 0;
+  if (typeof value === "number") return Number.isFinite(value);
+  if (Array.isArray(value)) return value.length > 0;
+  return value !== null && value !== undefined;
+}
+
+/**
+ * Validate string length
+ * @param value - String to validate
+ * @param options - Min/max length options
+ * @returns True if length is within bounds
+ */
+export function hasValidLength(
+  value: string,
+  options: { min?: number; max?: number }
+): boolean {
+  const { min, max } = options;
+  const length = value.length;
+  
+  if (min !== undefined && length < min) return false;
+  if (max !== undefined && length > max) return false;
+  
+  return true;
+}
+
+/**
+ * Sanitize input - prevent XSS
+ * Escapes HTML special characters
+ * @param input - Raw input string
+ * @returns Sanitized string
+ */
+export function sanitizeInput(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
+/**
+ * Validate environment variables
+ * Checks if required env vars are present
+ * @param required - Array of required environment variable names
+ * @returns Object with valid status and list of missing variables
+ */
+export function validateEnvVars(required: string[]): {
+  valid: boolean;
+  missing: string[];
+} {
+  const missing = required.filter((key) => !process.env[key]);
+  
+  return {
+    valid: missing.length === 0,
+    missing,
+  };
+}

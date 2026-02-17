@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Open-source AI Subscription Manager & Discovery Hub.",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
